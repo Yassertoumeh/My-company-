@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة الياسر للخدمات العامة | جميع خدماتك في مكان واحد</title>
+    <!-- خط 'Almarai' من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap" rel="stylesheet">
+    <!-- مكتبة Tailwind CSS للسرعة والاحترافية في التصميم -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- مكتبة Font Awesome للرموز التعبيرية -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2eN7hH0FqD+5F4Yv5HqF5Yv6K5N5Q5H5F5Yw5F5Yw5F5Yw5F5Yw5F5Yw5F5Yw5F5Yw5F5Yw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Almarai', sans-serif;
+            background-color: #f7fafc;
+        }
+        /* تعديل ارتفاع قسم 'hero' ليتناسب بشكل أفضل مع الهواتف */
+        .hero {
+            background-image: linear-gradient(rgb(0, 37, 204),rgb(96, 197, 255)), url('https://placehold.co/1920x1080/4f80c2/ffffff?text=Al-Yasser+Services');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 70vh; /* ارتفاع أقل على جميع الشاشات */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem;
+        }
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        /* إخفاء شريط التمرير (السكروول) في المتصفحات المختلفة */
+        body::-webkit-scrollbar { display: none; }
+        body { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* تنسيق النموذج المنبثق للتأكيد */
+        .success-modal {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .success-modal-content {
+            animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+
+        /* تحسين التصميم المتجاوب للهواتف */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                text-align: right;
+                width: 50%;
+            }
+            .navbar-links {
+                justify-content: flex-start;
+                width: 50%;
+                text-align: right;
+            }
+            .hero-text-box {
+                padding: 1.5rem;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- شريط التنقل (الناف بار) -->
+    <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex flex-wrap justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800 navbar-brand">شركة الياسر للخدمات العامة</a>
+            <div class="flex-grow flex justify-end space-x-4 space-x-reverse navbar-links">
+                <a href="#about" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">من نحن</a>
+                <a href="#services" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">خدماتنا</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">اتصل بنا</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- القسم الرئيسي (البطل) -->
+    <header class="hero text-white p-4">
+        <div class="bg-black bg-opacity-60 p-8 md:p-16 rounded-xl shadow-2xl max-w-2xl mx-auto transform transition-all duration-500 hover:scale-105 hero-text-box">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 hero-title">خدمات متكاملة بجودة عالية</h1>
+            <p class="text-lg md:text-xl mb-8 hero-subtitle">
+                نحن نوفر لك أفضل الفنيين والخبراء في جميع المجالات لتلبية احتياجات منزلك وشركتك.
+            </p>
+            <a href="#services" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110">
+                اكتشف خدماتنا
+            </a>
+        </div>
+    </header>
+    
+   <!-- قسم الخدمات -->
+    <main class="container mx-auto py-16 px-4" id="services">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-900">خدماتنا المتنوعة</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- خدمات الصيانة المنزلية -->
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('صيانة الأجهزة المنزلية', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Appliance+Repair', 'إصلاح وصيانة جميع أنواع الأجهزة المنزلية مثل الغسالات، الأفران، والمكيفات، والبرادات.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-blender-phone text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">صيانة الأجهزة المنزلية</h3>
+                    <p class="mt-2 text-gray-600">غسالات، أفران، مكيفات، وبرادات.</p>
+                </div>
+            </div>
+            
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('كهرباء عامة وإصلاح أعطال', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Electrical', 'إصلاح جميع الأعطال الكهربائية، تمديد الشبكات، تركيب الإنارة، وصيانة اللوحات الكهربائية.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-bolt text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">كهرباء عامة وإصلاح أعطال</h3>
+                    <p class="mt-2 text-gray-600">إصلاح أعطال وتمديدات كهربائية.</p>
+                </div>
+            </div>
+            
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('سباكة (صحية) وتركيب وتصليح', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Plumbing', 'خدمات سباكة شاملة، من إصلاح التسربات إلى تركيب الأدوات الصحية وتمديد شبكات المياه.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-faucet-drip text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">سباكة (صحية) وتركيب وتصليح</h3>
+                    <p class="mt-2 text-gray-600">تركيب وتصليح الأدوات الصحية.</p>
+                </div>
+            </div>
+            
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('نجارة ودهان وتركيب بلاط', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Carpentry+and+Painting', 'نقدم أعمال النجارة، الدهان، وتركيب البلاط، من التصميم إلى التنفيذ بجودة عالية.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-tools text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">نجارة ودهان وتركيب بلاط</h3>
+                    <p class="mt-2 text-gray-600">نجارة، دهان وتركيب بلاط.</p>
+                </div>
+            </div>
+
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('حدادة وأعمال العمار والبناء', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Blacksmithing+and+Building', 'تصنيع وتركيب الأبواب والنوافذ المعدنية، أعمال العمار والبناء، والتشطيبات النهائية.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-hard-hat text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">حدادة وأعمال العمار والبناء</h3>
+                    <p class="mt-2 text-gray-600">أعمال الحدادة والعمار والبناء.</p>
+                </div>
+            </div>
+
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('تركيب وصيانة أنظمة الطاقة الشمسية', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Solar', 'تركيب وصيانة أنظمة الطاقة الشمسية لتوليد الكهرباء للمنازل والشركات.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-sun text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">تركيب وصيانة أنظمة الطاقة الشمسية</h3>
+                    <p class="mt-2 text-gray-600">تركيب وصيانة الأنظمة.</p>
+                </div>
+            </div>
+
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('تركيب وصيانة كاميرات المراقبة', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Cameras', 'نقدم خدمات تركيب وصيانة كاميرات المراقبة وأجهزة الإنذار لحماية منزلك وممتلكاتك.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-video text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">تركيب وصيانة كاميرات المراقبة</h3>
+                    <p class="mt-2 text-gray-600">تركيب وصيانة الأجهزة.</p>
+                </div>
+            </div>
+
+            <!-- خدمات التنظيف والنقل -->
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('تعزيل وتنظيف المنازل والشقق والدرج', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Cleaning', 'تعزيل شامل للمنازل والشقق والدرج، وتنظيف بعد التشطيب وإزالة الأوساخ.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-broom text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">تعزيل وتنظيف المنازل والشقق والدرج</h3>
+                    <p class="mt-2 text-gray-600">تعزيل، تنظيف شقق ودرج.</p>
+                </div>
+            </div>
+
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('ازالة الردم ومخلفات البناء', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Waste+Removal', 'إزالة الردم ومخلفات البناء من المنازل والمشاريع بكفاءة وسرعة.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-dumpster text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">ازالة الردم ومخلفات البناء</h3>
+                    <p class="mt-2 text-gray-600">إزالة مخلفات البناء والنفايات.</p>
+                </div>
+            </div>
+
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('خدمات التوصيل', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Delivery', 'خدمات توصيل سريعة وموثوقة لجميع احتياجاتك داخل المدينة.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-truck text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">خدمات التوصيل</h3>
+                    <p class="mt-2 text-gray-600">توصيل الطلبات والبضائع.</p>
+                </div>
+            </div>
+            
+            <!-- خدمات التعليم والرعاية -->
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('توفير أساتذة خصوصيين لجميع المواد', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Tutors', 'نوفر أساتذة متخصصين في جميع المواد الدراسية والمناهج، لضمان التفوق الأكاديمي.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-chalkboard-teacher text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">توفير أساتذة خصوصيين لجميع المواد</h3>
+                    <p class="mt-2 text-gray-600">جميع المواد والمستويات الدراسية.</p>
+                </div>
+            </div>
+            
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('توفير أطباء وممرضين للرعاية المنزلية', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Medical', 'خدمات صحية منزلية من أطباء وممرضين متخصصين في جميع المجالات لتقديم الرعاية اللازمة.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-stethoscope text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">توفير أطباء وممرضين للرعاية المنزلية</h3>
+                    <p class="mt-2 text-gray-600">زيارات منزلية ورعاية صحية.</p>
+                </div>
+            </div>
+            
+            <!-- خدمات متخصصة أخرى -->
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('صيانة السيارات', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Car+Repair', 'صيانة وإصلاح أعطال السيارات، فحص الأنظمة الكهربائية، وإصلاح المحركات.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-car text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">صيانة السيارات</h3>
+                    <p class="mt-2 text-gray-600">إصلاح الأعطال الميكانيكية والكهربائية.</p>
+                </div>
+            </div>
+
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('خدمات التصوير', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Photography', 'نقدم خدمات التصوير الاحترافي للمناسبات الخاصة، جلسات تصوير شخصية، وتصوير للمنتجات.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-camera-retro text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">خدمات التصوير</h3>
+                    <p class="mt-2 text-gray-600">فوتوغرافي وفيديو للمناسبات.</p>
+                </div>
+            </div>
+
+            <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-200 cursor-pointer" onclick="openModal('تنجيد الأثاث', 'https://placehold.co/400x300/e5e7eb/6b7280?text=Upholstery', 'تجديد وتصليح جميع أنواع الأثاث، من الكنب والكراسي إلى الأسرّة، مع ضمان جودة الأقمشة.')">
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-couch text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">تنجيد الأثاث</h3>
+                    <p class="mt-2 text-gray-600">تجديد وتصليح الأثاث المنزلي.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- قسم "من نحن" (تم نقله إلى أسفل الصفحة الرئيسية) -->
+    <section class="container mx-auto py-16 px-4" id="about">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-900">من نحن</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 text-gray-700 leading-relaxed">
+                <p class="text-lg">
+                    في **شركة الياسر للخدمات العامة**، نؤمن بأن كل منزل وكل أسرة في دوما تستحق أفضل الخدمات. انطلقنا من رؤية بسيطة: أن نكون الجسر الذي يربط بين احتياجاتكم اليومية وبين أمهر الحرفيين في مدينتنا.
+                </p>
+                <p class="text-lg">
+                    نحن لسنا مجرد وسطاء، بل شركاء في بناء مجتمع محلي أقوى. نعمل بجد لضمان أن كل فني ننصح به يتمتع بالخبرة، الأمانة، والالتزام بالجودة. من صيانة بسيطة إلى مشاريع كبرى، هدفنا هو راحتك ورضاك الكامل.
+                </p>
+                <p class="text-lg font-bold text-gray-800">
+                    نحن هنا لنكون جزءاً من حلولك، لا من مشاكلك.
+                </p>
+            </div>
+            <div class="relative rounded-xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-105">
+                <img src="https://placehold.co/800x600/f3f4f6/334155?text=Our+Mission" alt="فريق عمل شركة الياسر" class="w-full h-auto">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-6">
+                    <p class="text-white text-xl font-bold">بناء الثقة من خلال الخبرة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التواصل (اتصل بنا) -->
+    <section class="bg-gray-200 py-16 px-4" id="contact">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">تواصل معنا</h2>
+            <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+                لأي استفسار أو لطلب خدمة، لا تتردد في التواصل معنا عبر الأرقام التالية.
+            </p>
+            <div class="flex flex-col items-center space-y-4">
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <i class="fas fa-phone-alt text-2xl text-blue-500"></i>
+                    <span class="text-xl font-bold"><a href="tel:+963967801459">+963-967-801-459</a></span>
+                </div>
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <i class="fas fa-envelope text-2xl text-blue-500"></i>
+                    <span class="text-xl font-bold"><a href="mailto:syyasr411@gmail.com">syyasr411@gmail.com</a></span>
+                </div>
+            </div>
+            <div class="mt-8 flex justify-center space-x-6 space-x-reverse">
+                <a href="https://facebook.com/groups/1124874766238862/" class="text-gray-600 hover:text-blue-500 text-3xl transition-colors duration-300" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/message/R47IZI7DCH3ZN1?src=qr" class="text-gray-600 hover:text-blue-500 text-3xl transition-colors duration-300" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://t.me/yasser411" class="text-gray-600 hover:text-blue-500 text-3xl transition-colors duration-300" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم تقييمات العملاء (ملاحظة: هذا قسم توضيحي فقط، التقييمات ستكون سرية كما طلبت) -->
+    <section class="container mx-auto py-16 px-4 hidden">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-900">تقييمات عملائنا</h2>
+        <p class="text-center text-gray-600">
+            سيتم عرض التقييمات الإيجابية هنا قريباً لتعزيز الثقة.
+        </p>
+    </section>
+
+    <!-- تذييل الصفحة (الفوتر) -->
+    <footer class="bg-gray-800 text-white p-6 text-center">
+        <p>&copy; 2025 شركة الياسر للخدمات العامة. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- النموذج المنبثق لطلب الخدمة -->
+    <div id="serviceModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4 z-50">
+        <div class="bg-white p-8 rounded-xl shadow-2xl max-w-md w-full relative">
+            <button class="absolute top-4 left-4 text-gray-600 hover:text-gray-900 text-3xl" onclick="closeModal()">
+                &times;
+            </button>
+            <h3 id="modalTitle" class="text-2xl font-bold mb-4 text-gray-900">طلب خدمة</h3>
+            <p id="modalDescription" class="text-gray-600 mb-6"></p>
+            <form action="https://formsubmit.co/syyasr411@gmail.com" method="POST" class="space-y-4">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">الاسم الكامل</label>
+                    <input type="text" id="name" name="الاسم" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2" required>
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700">رقم الهاتف</label>
+                    <input type="tel" id="phone" name="رقم الهاتف" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2" required>
+                </div>
+                <div>
+                    <label for="address" class="block text-sm font-medium text-gray-700">العنوان التفصيلي</label>
+                    <textarea id="address" name="العنوان" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2" required></textarea>
+                </div>
+                <div>
+                    <label for="details" class="block text-sm font-medium text-gray-700">تفاصيل الخدمة المطلوبة</label>
+                    <textarea id="details" name="تفاصيل الخدمة" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2" required></textarea>
+                </div>
+                <input type="hidden" name="الخدمة المطلوبة" id="hiddenServiceField" value="">
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-md transition-colors duration-300">
+                    أرسل الطلب
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- النموذج المنبثق للتأكيد (جديد) -->
+    <div id="successModal" class="fixed inset-0 success-modal hidden items-center justify-center p-4 z-50">
+        <div class="bg-white p-8 rounded-xl shadow-2xl max-w-sm w-full relative success-modal-content text-center">
+            <button class="absolute top-4 left-4 text-gray-600 hover:text-gray-900 text-3xl" onclick="closeSuccessModal()">
+                &times;
+            </button>
+            <i class="fas fa-check-circle text-6xl text-green-500 mb-4 animate-bounce"></i>
+            <h4 class="text-2xl font-bold mb-2 text-gray-900">تم تأكيد طلبك!</h4>
+            <p class="text-gray-600 mb-4">
+                سيتواصل معكم فريق العمل بأقرب وقت. شكراً لثقتكم بنا.
+            </p>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full transition-colors duration-300" onclick="closeSuccessModal()">
+                حسناً
+            </button>
+        </div>
+    </div >
+
+    <script>
+        const serviceForm = document.querySelector('#serviceModal form');
+        const mainModal = document.getElementById('serviceModal');
+        const successModal = document.getElementById('successModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const hiddenServiceField = document.getElementById('hiddenServiceField');
+        const navLinks = document.querySelectorAll('nav a');
+
+        // دالة لفتح النموذج المنبثق
+        function openModal(title, image, description) {
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+            hiddenServiceField.value = title;
+            mainModal.style.display = 'flex';
+        }
+
+        // دالة لإغلاق النموذج المنبثق
+        function closeModal() {
+            mainModal.style.display = 'none';
+        }
+
+        // دالة لفتح نموذج التأكيد
+        function openSuccessModal() {
+            successModal.style.display = 'flex';
+        }
+
+        // دالة لإغلاق نموذج التأكيد
+        function closeSuccessModal() {
+            successModal.style.display = 'none';
+        }
+
+        // معالجة إرسال طلب الخدمة
+        serviceForm.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            
+            closeModal();
+            openSuccessModal();
+        });
+
+        //Smooth scrolling for navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Check if the link is an anchor link to a section on the same page
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80, // Offset for fixed navbar
+                            behavior: 'smooth'
+                        });
+                    }
+                } else {
+                    // For external links like 'about.html'
+                    window.location.href = this.getAttribute('href');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
