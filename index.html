@@ -253,9 +253,6 @@
                 <p class="text-lg">
                     نحن لسنا مجرد وسطاء، بل شركاء في بناء مجتمع محلي أقوى. نعمل بجد لضمان أن كل فني ننصح به يتمتع بالخبرة، الأمانة، والالتزام بالجودة. من صيانة بسيطة إلى مشاريع كبرى، هدفنا هو راحتك ورضاك الكامل.
                 </p>
-                <p class="text-lg font-bold text-gray-800">
-                    نحن هنا لنكون جزءاً من حلولك، لا من مشاكلك.
-                </p>
             </div>
             <div class="relative rounded-xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-105">
                 <img src="https://placehold.co/800x600/f3f4f6/334155?text=Our+Mission" alt="فريق عمل شركة الياسر" class="w-full h-auto">
@@ -289,14 +286,6 @@
                 <a href="https://t.me/yasser411" class="text-gray-600 hover:text-blue-500 text-3xl transition-colors duration-300" target="_blank"><i class="fab fa-telegram-plane"></i></a>
             </div>
         </div>
-    </section>
-
-    <!-- قسم تقييمات العملاء (ملاحظة: هذا قسم توضيحي فقط، التقييمات ستكون سرية كما طلبت) -->
-    <section class="container mx-auto py-16 px-4 hidden">
-        <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-900">تقييمات عملائنا</h2>
-        <p class="text-center text-gray-600">
-            سيتم عرض التقييمات الإيجابية هنا قريباً لتعزيز الثقة.
-        </p>
     </section>
 
     <!-- تذييل الصفحة (الفوتر) -->
@@ -395,22 +384,18 @@
         }
 
         // معالجة إرسال طلب الخدمة
-        // هذه هي الدالة المعدلة التي تقوم بإرسال البيانات إلى Formspree
         serviceForm.addEventListener('submit', function(event) {
-            // نمنع السلوك الافتراضي لإرسال النموذج إلى رابط خارجي
             event.preventDefault(); 
             
-            // نحصل على البيانات من النموذج
             const formData = new FormData(serviceForm);
             
-            // نحصل على البريد الإلكتروني من حقل "البريد الإلكتروني"
-            // ونضيفه لحقل _replyto لإرسال الردود
+            // نحصل على البريد الإلكتروني من حقل "البريد الإلكتروني" 
+            // ونضيفه لـ `formData` لـ `_replyto` لتمكين الردود
             const emailInput = document.getElementById('email');
             if (emailInput) {
                  formData.append('_replyto', emailInput.value);
             }
 
-            // إرسال البيانات إلى Formspree باستخدام Fetch API
             fetch(serviceForm.action, {
                 method: 'POST',
                 body: formData,
@@ -419,13 +404,10 @@
                 }
             })
             .then(response => {
-                // إذا كان الإرسال ناجحًا
                 if (response.ok) {
-                    closeModal(); // إغلاق النموذج الرئيسي
-                    openSuccessModal(); // إظهار رسالة التأكيد
+                    closeModal();
+                    openSuccessModal();
                 } else {
-                    // إذا كان هناك خطأ في الإرسال
-                    // Formspree سيرسل رسالة خطأ مع status 422
                     response.json().then(data => {
                         if (data.errors) {
                             alert('عذراً، حدث خطأ في البيانات المدخلة. يرجى مراجعتها والمحاولة مرة أخرى.');
@@ -436,7 +418,6 @@
                 }
             })
             .catch(error => {
-                // التعامل مع أي أخطاء في الشبكة
                 console.error('Error:', error);
                 alert('عذراً، حدث خطأ في الاتصال. يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.');
             });
